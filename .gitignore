@@ -1,0 +1,26 @@
+# Fichiers à ignorer
+
+# Fichiers d'environnement
+.env
+
+# Dossier Python
+__pycache__/
+*.pyc
+
+# Dossier de tests
+.pytest_cache/
+
+# Fichiers de build
+dist/
+build/
+
+# Logs
+logs/
+*.log
+
+# Fichiers de cache
+.cache/
+
+# Fichiers temporaires
+*.tmp
+---
