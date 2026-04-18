@@ -1,26 +1,38 @@
-# Fichiers à ignorer
+# Virtual Environment
+venv/
+env/
+.venv/
+env.bak/
 
-# Fichiers d'environnement
-.env
-
-# Dossier Python
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
 
-# Dossier de tests
+# Test
 .pytest_cache/
 
-# Fichiers de build
-dist/
-build/
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
 
 # Logs
-logs/
 *.log
 
-# Fichiers de cache
-.cache/
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
 
-# Fichiers temporaires
+# Pip generated files
+pip-log.txt
+pip-log.html
+
+# Cache
+*.cache
 *.tmp
----
