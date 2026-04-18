@@ -1,84 +1,53 @@
-# VMware Cloud Foundation (VCF) Python CRUD Tool
+# Projet Python pour Gestion des Machines Virtuelles VMware Cloud Foundation
 
-A Python application for performing CRUD operations on virtual machines in a VMware Cloud Foundation (VCF) environment via the vSphere API.
+Ce projet Python permet d'effectuer des opérations CRUD (Create, Read, Update, Delete) sur les machines virtuelles d'un environnement VMware Cloud Foundation (VCF) via l'API vSphere.
 
-## Features
+## Fonctionnalités
 
-- Perform Create, Read, Update, and Delete (CRUD) operations on virtual machines.
-- Interactive CLI menu for easy navigation.
-- Modular structure with clear separation of concerns.
-- Configurable via environment variables.
-- Ready for future expansion with additional features.
+- **Create** : Création de machines virtuelles à partir de modèles définis.
+- **Read** : Lecture des informations sur les machines virtuelles existantes.
+- **Update** : Modification des configurations des machines virtuelles.
+- **Delete** : Suppression de machines virtuelles.
 
-## Prerequisites
-
-- Python 3.9 or higher
-- pip (Python package manager)
-- vSphere client access (vCenter server)
-- A valid vCenter environment with VMs to operate on
-
-## Getting Started
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/your-username/vcf-crud-tool.git
-cd vcf-crud-tool
-```
-
-2. Create a `.env` file from the example:
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env` to include your vCenter credentials and settings:
+## Structure du Projet
 
 ```
-VCENTER_HOST=your-vcenter-host
-VCENTER_USER=your-username
-VCENTER_PASSWORD=your-password
-VCENTER_PORT=443
+project/
+├── src/
+│   └── vcf_client/
+│       ├── __init__.py
+│       ├── client.py
+│       └── vm_operations.py
+├── tests/
+│   └── test_vm_operations.py
+├── requirements.txt
+├── README.md
+└── setup.py
 ```
 
-3. Install the required dependencies:
+## Utilisation
 
-```bash
-pip install -r requirements.txt
-```
+1. Installez les dépendances :
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-4. Run the application:
+2. Configurez les paramètres de connexion (URL, credentials, etc.) dans `src/vcf_client/config.py`.
 
-```bash
-python main.py
-```
+3. Exécutez les opérations CRUD :
+   ```python
+   from vcf_client.client import VCFClient
 
-The CLI will present a menu with options to:
-- Create a VM
-- List existing VMs
-- Update a VM
-- Delete a VM
+   client = VCFClient()
+   client.create_vm("my-vm", "template")
+   ```
 
-## Directory Structure
+## État d'avancement
 
-```
-vcf-crud-tool/
-├── client.py          # vSphere client connection logic
-├── main.py            # CLI menu and command routing
-├── requirements.txt   # Python dependencies
-├── .env.example       # Example environment variables
-├── .gitignore         # Files to exclude from Git
-└── tests/             # Unit tests (structure only)
-```
+- [x] Structure de base du projet
+- [x] Implémentation des opérations CRUD
+- [ ] Intégration de la gestion des erreurs
+- [ ] Tests unitaires
+- [ ] Documentation complète
 
-## Testing
-
-Run tests to verify the structure and imports:
-
-```bash
-pytest
-```
-
-Tests will pass without requiring actual vCenter connectivity.
-
-> Note: This tool is designed for development and learning. It does not perform real operations on production environments.
+Ce projet est conçu pour être maintenable et évolutif, prête à intégrer des fonctionnalités futures telles que la gestion des réseaux, des stockages ou des snapshots.
