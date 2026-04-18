@@ -1,66 +1,56 @@
-"""
-Module principal du projet.
-
-Ce script affiche un menu CLI interactif permettant d'effectuer des opérations CRUD
-sur les machines virtuelles dans un environnement VMware Cloud Foundation (VCF)
-via l'API vSphere.
-"""
-
+```python
 import sys
-from src.client.client import VCClient
-
-
-def show_menu():
-    """Affiche le menu principal."""
-    print("\n=== Menu CRUD pour les machines virtuelles ===")
-    print("1. Créer une machine virtuelle")
-    print("2. Lister les machines virtuelles")
-    print("3. Mettre à jour une machine virtuelle")
-    print("4. Supprimer une machine virtuelle")
-    print("0. Quitter")
-    print("-" * 40)
-
-
-def get_user_choice():
-    """Obtient le choix de l'utilisateur."""
-    try:
-        choice = input("Veuillez choisir une option (0-4): ").strip()
-        return int(choice)
-    except ValueError:
-        print("Entrée invalide. Veuillez entrer un nombre.")
-        return None
-
+from rich.console import Console
+from rich.menu import Menu
+from rich.panel import Panel
+from rich.prompt import Prompt
 
 def main():
-    """Fonction principale du script."""
-    # Exemple de configuration (à remplacer par chargement depuis .env)
-    vcenter_host = "vcenter.example.com"
-    vcenter_user = "admin@vsphere.local"
-    vcenter_password = "securepassword"
-    vcenter_port = 443
-
-    # Initialisation du client
-    client = VCClient(vcenter_host, vcenter_user, vcenter_password, vcenter_port)
-
+    console = Console()
+    
+    console.print(Panel("[bold green]VMware Cloud Foundation VM Manager[/bold green]"))
+    
+    menu_options = {
+        "1": "create_vm",
+        "2": "list_vms",
+        "3": "update_vm",
+        "4": "delete_vm"
+    }
+    
     while True:
-        show_menu()
-        choice = get_user_choice()
-
-        if choice == 0:
-            print("Au revoir !")
+        console.print("\n" + "-" * 50)
+        console.print("Select an operation:")
+        console.print("1. Create VM")
+        console.print("2. List VMs")
+        console.print("3. Update VM")
+        console.print("4. Delete VM")
+        console.print("0. Exit")
+        console.print("-" * 50)
+        
+        choice = Prompt.ask("Enter your choice", default="0")
+        
+        if choice == "0":
+            console.print("[bold yellow]Goodbye![/bold yellow]")
             break
-        elif choice == 1:
-            print("Option 'Créer' sélectionnée. (Implémentation future)")
-        elif choice == 2:
-            print("Option 'Lister' sélectionnée. (Implémentation future)")
-        elif choice == 3:
-            print("Option 'Mettre à jour' sélectionnée. (Implémentation future)")
-        elif choice == 4:
-            print("Option 'Supprimer' sélectionnée. (Implémentation future)")
-        else:
-            print("Option invalide. Veuillez choisir entre 0 et 4.")
+        
+        if choice not in menu_options:
+            console.print("[bold red]Invalid choice. Please try again.[/bold red]")
+            continue
+        
+        operation = menu_options[choice]
+        
+        console.print(f"\nExecuting: [bold]{operation}[/bold]")
+        
+        # Simulate function call - actual implementation would be here
+        if operation == "create_vm":
+            print("create_vm function called (not implemented)")
+        elif operation == "list_vms":
+            print("list_vms function called (not implemented)")
+        elif operation == "update_vm":
+            print("update_vm function called (not implemented)")
+        elif operation == "delete_vm":
+            print("delete_vm function called (not implemented)")
 
-
-if __name__ == "__main__":
+if __name__ &__name__ == "__main__":
     main()
----
+```
