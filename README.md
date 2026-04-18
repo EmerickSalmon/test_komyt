@@ -1,72 +1,84 @@
-# Projet CRUD pour VMware Cloud Foundation (VCF)
+# VMware Cloud Foundation (VCF) Python CRUD Tool
 
-Ce projet Python permet d'effectuer des opérations CRUD (Create, Read, Update, Delete) sur les machines virtuelles d'un environnement VMware Cloud Foundation (VCF) via l'API vSphere.
+A Python application for performing CRUD operations on virtual machines in a VMware Cloud Foundation (VCF) environment via the vSphere API.
 
-## Fonctionnalités
+## Features
 
-- Interface CLI pour gérer les machines virtuelles
-- Connexion sécurisée à vCenter via l'API vSphere
-- Structure modulaire avec des modules séparés par opération (Create, Read, Update, Delete)
+- Perform Create, Read, Update, and Delete (CRUD) operations on virtual machines.
+- Interactive CLI menu for easy navigation.
+- Modular structure with clear separation of concerns.
+- Configurable via environment variables.
+- Ready for future expansion with additional features.
 
-## Installation
+## Prerequisites
 
-1. Clonez le projet :
-   ```bash
-   git clone https://github.com/your-username/vcf-crud.git
-   cd vcf-crud
-   ```
+- Python 3.9 or higher
+- pip (Python package manager)
+- vSphere client access (vCenter server)
+- A valid vCenter environment with VMs to operate on
 
-2. Installez les dépendances :
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Getting Started
 
-3. Créez un fichier `.env` à partir de `.env.example` :
-   ```bash
-   cp .env.example .env
-   ```
+1. Clone the repository:
 
-4. Modifiez le fichier `.env` avec vos informations de connexion au vCenter.
-
-## Utilisation
-
-Exécutez le script principal :
 ```bash
-python src/main.py
+git clone https://github.com/your-username/vcf-crud-tool.git
+cd vcf-crud-tool
 ```
 
-Le script affichera un menu interactif avec les options suivantes :
-- 1. Créer une machine virtuelle
-- 2. Lister les machines virtuelles
-- 3. Mettre à jour une machine virtuelle
-- 4. Supprimer une machine virtuelle
-- 0. Quitter
+2. Create a `.env` file from the example:
 
-## Documentation
+```bash
+cp .env.example .env
+```
 
-- Le projet est structuré en modules clairs pour faciliter la maintenance.
-- Les tests sont inclus et peuvent être exécutés avec `pytest`.
+Edit `.env` to include your vCenter credentials and settings:
 
-## Développement
+```
+VCENTER_HOST=your-vcenter-host
+VCENTER_USER=your-username
+VCENTER_PASSWORD=your-password
+VCENTER_PORT=443
+```
 
-- Les fichiers sources sont organisés dans le dossier `src/`.
-- Les tests sont situés dans le dossier `tests/`.
-- La documentation est générée via Sphinx.
+3. Install the required dependencies:
 
-## Notes
+```bash
+pip install -r requirements.txt
+```
 
-- Ce projet est en phase initiale. Les fonctionnalités CRUD sont actuellement des stubs.
-- Les connexions réelles à vCenter ne sont pas implémentées dans les premières versions.
-- L'authentification est simulée dans ce fichier initial.
+4. Run the application:
 
-## Contribuer
+```bash
+python main.py
+```
 
-Pour contribuer :
-1. Créez une branche.
-2. Faites vos modifications.
-3. Faites une pull request.
+The CLI will present a menu with options to:
+- Create a VM
+- List existing VMs
+- Update a VM
+- Delete a VM
 
-## Licence
+## Directory Structure
 
-Ce projet est sous licence MIT.
----
+```
+vcf-crud-tool/
+├── client.py          # vSphere client connection logic
+├── main.py            # CLI menu and command routing
+├── requirements.txt   # Python dependencies
+├── .env.example       # Example environment variables
+├── .gitignore         # Files to exclude from Git
+└── tests/             # Unit tests (structure only)
+```
+
+## Testing
+
+Run tests to verify the structure and imports:
+
+```bash
+pytest
+```
+
+Tests will pass without requiring actual vCenter connectivity.
+
+> Note: This tool is designed for development and learning. It does not perform real operations on production environments.
