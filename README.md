@@ -1,65 +1,17 @@
-# VM Creation Module Documentation
+```markdown
+# VMware VCF VM Creation Module
 
-This module allows users to create virtual machines on a VMware VCF environment using the vSphere API (pyvmomi). The user can specify the VM parameters via the command line interface (CLI).
+This module, located in `create.py`, allows users to create a virtual machine on an environment powered by VMware VCF using the vSphere API (pyvmomi). Users can specify the VM parameters directly from the command line interface (CLI).
 
 ## Usage
 
-### Interactive Input
-Run the `create` command without any parameters, and you will be prompted to enter the required details interactively.
+To use the `create.py` module, execute it with the desired VM parameters. Refer to the CLI help for more information:
 
-```sh
-python -m src.vm.create
+```bash
+python create.py --help
 ```
 
-### Direct Parameter Specification
-You can also specify all parameters directly in the command line. Here is an example:
+## Contributing
 
-```sh
-python -m src.vm.create --name "my-vm" --datastore "DS1" --network "VM Network" --memory 4096 --cpus 2
+Contributions to this project are welcome! Please ensure that any new features or changes are thoroughly tested and documented.
 ```
-
-### Supported Parameters
-
-- `--name`: Name of the virtual machine (required)
-- `--datastore`: Datastore where the VM will be created (required)
-- `--network`: Network to which the VM will connect (required)
-- `--memory`: Amount of memory in MB (default: 2048)
-- `--cpus`: Number of CPUs (default: 1)
-- `--template`: Template name for cloning (optional)
-
-### Error Handling
-Errors are handled gracefully, and explicit messages are provided to the user. For example:
-
-- If a required parameter is missing, the user will be informed which parameter is needed.
-- If there is an issue with the vCenter connection or API interaction, appropriate error messages will be displayed.
-
-## Testing
-
-To ensure that the `create` command works correctly, you can run the following commands:
-
-1. **Linting**: Check for syntax and style errors.
-    ```sh
-    flake8
-    ```
-
-2. **Unit Tests**: Run the unit tests to validate parameter validation.
-    ```sh
-    python -m unittest discover
-    ```
-
-## Verification
-
-Before finishing, run these commands inside the container to verify that everything is working correctly:
-
-- Linting:
-    ```sh
-    flake8
-    ```
-
-- Unit Tests:
-    ```sh
-    python -m unittest discover
-    ```
-
-Ensure all commands exit with status 0 before marking this task as complete.
-
