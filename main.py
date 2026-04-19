@@ -1,5 +1,7 @@
 ```python
-# Placeholder for the main entry point
+#!/usr/bin/env python3
+import sys
+
 if __name__ == "__main__":
-    pass
+    print("This is the main script.")
 ```
