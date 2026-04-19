@@ -1,43 +1,43 @@
-```markdown
-# VM Creation Module
+# Module create.py
 
-This module provides functionality to create a virtual machine in a VMware VCF environment using the vSphere API (pyvmomi).
+This module allows for the creation of a virtual machine on a VMware VCF environment using the vSphere API (pyvmomi). Users can specify VM parameters via the command line interface.
 
 ## Usage
 
-To use this module, you need to have the `pyvmomi` library installed. You can install it via pip:
+To use the `create.py` module, run the following command:
 
 ```bash
-pip install pyvmomi
+python create.py --param1 value1 --param2 value2 ...
 ```
 
-### CLI Command
+Replace `--param1`, `--param2`, etc., with the actual parameters required for your virtual machine configuration.
 
-The module exposes a command-line interface to create VMs. Here is an example of how to use it:
+## Parameters
+
+- `--param1`: Description of parameter 1.
+- `--param2`: Description of parameter 2.
+- ...
+
+For a full list of parameters, use:
 
 ```bash
-python main.py create --vcenter-host <vcenter_host> --vcenter-user <vcenter_user> --vcenter-password <vcenter_password> \
-                     --vm-name <vm_name> --datacenter-name <datacenter_name> --cluster-name <cluster_name> \
-                     --template-name <template_name>
+python create.py --help
 ```
 
-### Parameters
+## Prerequisites
 
-- `--vcenter-host`: The hostname or IP address of the vCenter server.
-- `--vcenter-user`: The username for vCenter authentication.
-- `--vcenter-password`: The password for vCenter authentication.
-- `--vm-name`: The name of the VM to create.
-- `--datacenter-name`: The name of the datacenter where the VM will be created.
-- `--cluster-name`: The name of the cluster within the datacenter where the VM will be created.
-- `--template-name`: The name of the template from which the VM will be cloned.
+Ensure you have the following installed:
 
-## Error Handling
+- Python 3.x
+- pyvmomi library (`pip install pyvmomi`)
 
-The module includes error handling for common issues such as:
+## Example
 
-- Duplicate VM names
-- Invalid arguments
-- Unspecified errors
+Create a virtual machine with specific configurations:
 
-Each error case is accompanied by a clear message to help users understand what went wrong.
+```bash
+python create.py --name myVM --cpu 4 --memory 8192
 ```
+
+This will create a VM named "myVM" with 4 CPUs and 8GB of RAM.
+
