@@ -1,0 +1,38 @@
+# Virtual Environment
+venv/
+env/
+.venv/
+env.bak/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Test
+.pytest_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Pip generated files
+pip-log.txt
+pip-log.html
+
+# Cache
+*.cache
+*.tmp
