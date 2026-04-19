@@ -1,23 +1,18 @@
 ```python
 import argparse
-from src.create import create_vm
+from src.vm import create
 
 def main():
-    parser = argparse.ArgumentParser(description="VM Management Tool")
-    subparsers = parser.add_subparsers(dest='command')
-
-    # Create command
-    create_parser = subparsers.add_parser('create', help='Create a new virtual machine')
-    create_parser.add_argument('--name', type=str, required=True, help='Name of the VM')
-    create_parser.add_argument('--template', type=str, required=True, help='Template to clone from')
-    create_parser.add_argument('--datacenter', type=str, required=True, help='Datacenter name')
-    create_parser.add_argument('--cluster', type=str, required=True, help='Cluster name')
-    create_parser.add_argument('--resource_pool', type=str, required=True, help='Resource pool name')
+    parser = argparse.ArgumentParser(description="Create a VM in VMware VCF environment.")
+    parser.add_argument("name", help="Name of the VM")
+    # Add other required and optional arguments here
 
     args = parser.parse_args()
 
-    if args.command == 'create':
-        create_vm(args.name, args.template, args.datacenter, args.cluster, args.resource_pool)
+    try:
+        create.create_vm(args.name, **vars(args))
+    except Exception as e:
+        print(f"Error: {e}")
 
 if __name__ == "__main__":
     main()
