@@ -1,33 +1,26 @@
 ```python
-from pyVim.connect import SmartConnect, Disconnect
-from pyVmomi import vim
-import ssl
+from rich.console import Console
 
-def create_vm(vm_name, **kwargs):
-    # Implement the VM creation logic here
-    # Use kwargs to handle other parameters like datastore, template, etc.
+console = Console()
 
-    # Example error handling
-    if not vm_name:
-        raise ValueError("VM name cannot be empty")
+def create_vm(name, template, ip):
+    # Simulate VM creation logic here
+    vm_info = {
+        'name': name,
+        'uuid': '12345-67890',
+        'ip': ip,
+        'status': 'Running'
+    }
+    
+    console.print(f"Creating VM '{name}' from template '{template}' with IP '{ip}'", style="bold yellow")
+    
+    # Simulate some delay
+    import time
+    time.sleep(2)
+    
+    return vm_info
 
-    # Connect to vCenter
-    context = ssl._create_unverified_context()
-    si = SmartConnect(host="vcenter_host", user="username", pwd="password", sslContext=context)
-
-    content = si.RetrieveContent()
-
-    # Check for duplicate VM names
-    container = content.viewManager.CreateContainerView(content.rootFolder, [vim.VirtualMachine], True)
-    for vm in container.view:
-        if vm.name == vm_name:
-            Disconnect(si)
-            raise ValueError("A virtual machine with this name already exists")
-
-    # Implement resource checks and template cloning logic here
-
-    # Disconnect from vCenter
-    Disconnect(si)
-
-    print(f"VM '{vm_name}' created successfully.")
+# Example usage (to be removed in final implementation)
+if __name__ == '__main__':
+    create_vm('test-vm', 'default-template', '192.168.1.10')
 ```

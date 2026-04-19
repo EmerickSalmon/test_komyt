@@ -1,3 +1,2 @@
-```python
-# Placeholder for src package initialization
-```
+# This is the root package initialization for the vmware-vcf module.
+__version__ = "0.1"
