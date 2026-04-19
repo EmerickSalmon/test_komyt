@@ -1,5 +1,3 @@
-```python
-# This is a placeholder for create functionality.
+# This is a placeholder for create implementation
 def create_vm():
     pass
-```

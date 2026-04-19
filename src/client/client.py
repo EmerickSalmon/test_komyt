@@ -1,5 +1,2 @@
-```python
-# This is a placeholder for client implementation.
-class Client:
-    pass
-```
+# This is a placeholder for client client implementation
+pass

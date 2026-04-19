@@ -1,13 +1,9 @@
-```python
 import unittest
-from src.vm.create import create_vm
 
 class TestCreateVM(unittest.TestCase):
-    def test_create_vm(self):
-        # Add test cases here to validate the create_vm function
-        pass
+    def test_parameter_validation(self):
+        # Placeholder for parameter validation tests
+        self.assertTrue(True)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
-```
-

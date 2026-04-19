@@ -1,3 +1,1 @@
-```python
-# This is an empty __init__ file for the update package.
-```
+# This is an initialization file for the update package
