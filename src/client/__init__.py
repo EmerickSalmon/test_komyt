@@ -1,2 +1,3 @@
-# Empty __init__.py to make client a package
----
+```python
+# Initialize the client package
+```

@@ -1,2 +1,3 @@
-# Empty __init__.py to make src a package
----
+```python
+# Placeholder for src package initialization
+```
