@@ -1,2 +1,3 @@
-# Empty __init__.py to make create a package
----
+```python
+# This is an empty __init__ file for the create package.
+```

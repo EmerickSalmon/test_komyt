@@ -1,2 +1,3 @@
-# Empty __init__.py to make update a package
----
+```python
+# This is an empty __init__ file for the update package.
+```
